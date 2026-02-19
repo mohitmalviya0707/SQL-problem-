@@ -1,0 +1,30 @@
+
+Abigail Breslin Nominations
+
+
+Last Updated: February 2026
+Easy
+
+
+Count the number of movies for which Abigail Breslin was nominated for an Oscar.
+Table
+-------------------------------------------------------------------------------==--------------==----------
+
+
+SELECT *
+FROM oscar_nominees;
+
+-- 2) Filter only Abigail Breslin entries
+SELECT *
+FROM oscar_nominees
+WHERE nominee = 'Abigail Breslin';
+
+-- 3) Count how many movies she was nominated for
+SELECT COUNT(DISTINCT movie) AS nomination_count
+FROM oscar_nominees
+WHERE nominee = 'Abigail Breslin';
+
+-- 4) Check the exact movie name(s)
+SELECT DISTINCT movie
+FROM oscar_nominees
+WHERE nominee = 'Abigail Breslin';
