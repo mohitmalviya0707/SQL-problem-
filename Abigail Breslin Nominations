@@ -9,7 +9,7 @@ Easy
 Count the number of movies for which Abigail Breslin was nominated for an Oscar.
 Table
 -------------------------------------------------------------------------------==--------------==----------
-
+solution ------
 
 SELECT *
 FROM oscar_nominees;
