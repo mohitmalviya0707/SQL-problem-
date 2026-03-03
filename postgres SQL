@@ -67,3 +67,62 @@ SELECT DISTINCT o.customer_name
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 WHERE p.category = 'Fitness';
+
+
+
+
+Many-to-Many: Students & Courses
+
+Tables & Sample Data
+
+CREATE TABLE students (
+  student_id INT PRIMARY KEY,
+  student_name VARCHAR(100)
+);
+
+CREATE TABLE courses (
+  course_id INT PRIMARY KEY,
+  course_name VARCHAR(100)
+);
+
+CREATE TABLE student_courses (
+  student_id INT,
+  course_id INT,
+  PRIMARY KEY (student_id, course_id),
+  FOREIGN KEY (student_id) REFERENCES students(student_id),
+  FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+-- Sample Mapping
+INSERT INTO student_courses (student_id, course_id) VALUES
+(1, 101), (1, 102), (2, 101), (2, 103), (3, 102);
+Queries
+
+Q1. Show student and course names
+
+SELECT s.student_name, c.course_name
+FROM student_courses sc
+JOIN students s ON sc.student_id = s.student_id
+JOIN courses c ON sc.course_id = c.course_id;
+Q2. List all courses taken by 'Simran'
+
+SELECT c.course_name
+FROM student_courses sc
+JOIN students s ON sc.student_id = s.student_id
+JOIN courses c ON sc.course_id = c.course_id
+WHERE s.student_name = 'Simran';
+📄 Views
+
+View 1: Available Fitness Products
+
+CREATE VIEW available_fitness_products AS
+SELECT product_id, name, price, stock_quantity
+FROM products
+WHERE category = 'Fitness' AND is_available = TRUE;
+View 2: Low Stock Products
+
+CREATE VIEW low_stock_products AS
+SELECT name, category, stock_quantity
+FROM products
+WHERE stock_quantity < 30;
+
