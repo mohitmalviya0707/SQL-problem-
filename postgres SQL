@@ -126,3 +126,5 @@ SELECT name, category, stock_quantity
 FROM products
 WHERE stock_quantity < 30;
 
+-----
+
