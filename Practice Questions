@@ -25,4 +25,4 @@ Q8. Show all the unique categories from the products table.
 
 SELECT DISTINCT category FROM products;
 
-,,
+,,,
