@@ -24,3 +24,5 @@ SELECT name AS Item_Name, price AS Item_Price FROM products;
 Q8. Show all the unique categories from the products table.
 
 SELECT DISTINCT category FROM products;
+
+,
