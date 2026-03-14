@@ -127,5 +127,7 @@ FROM products
 WHERE stock_quantity < 30;
 
 
+
+
 -.
 
