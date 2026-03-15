@@ -124,5 +124,5 @@ View 2: Low Stock Products
 CREATE VIEW low_stock_products AS
 SELECT name, category, stock_quantity
 FROM products
-WHERE stock_quantity < 30; ,,
+WHERE stock_quantity < 30; ,
 
