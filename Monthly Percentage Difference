@@ -17,3 +17,5 @@ GROUP BY year_month
 WINDOW w AS (
                                  ORDER BY to_char(created_at::date, 'YYYY-MM'))
 ORDER BY year_month ASC
+
+
