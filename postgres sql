@@ -10,3 +10,6 @@ CREATE TABLE products(
   last_update TIMESTAMP DEFAULT NOW()
 );
 
+
+
+/////
