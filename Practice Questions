@@ -3,7 +3,7 @@ Q1. Show the name and price of all products.
 SELECT name, price FROM products;
 Q2. Show all products where the category is 'Electronics'.
 
-SELECT * FROM products WHERE category = 'Electronics';
+SELECT * FROM products WHERE category = 'Electronics';  
 Q3. Group products by category. Show each category once.
 
 SELECT category FROM products GROUP BY category;
