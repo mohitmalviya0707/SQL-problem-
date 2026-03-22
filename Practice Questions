@@ -12,7 +12,7 @@
 
 ### Q1. Show the name and price of all products.
 
-```sql
+
 SELECT name, price 
 FROM products;
 ```
@@ -21,7 +21,7 @@ FROM products;
 
 ### Q2. Show all products where the category is 'Electronics'.
 
-```sql
+
 SELECT * 
 FROM products 
 WHERE category = 'Electronics';
@@ -31,7 +31,7 @@ WHERE category = 'Electronics';
 
 ### Q3. Group products by category. Show each category once.
 
-```sql
+
 SELECT category 
 FROM products 
 GROUP BY category;
@@ -41,7 +41,7 @@ GROUP BY category;
 
 ### Q4. Show categories that have more than 1 product.
 
-```sql
+
 SELECT category, COUNT(*) 
 FROM products
 GROUP BY category
@@ -52,7 +52,7 @@ HAVING COUNT(*) > 1;
 
 ### Q5. Show all products sorted by price in ascending order.
 
-```sql
+
 SELECT * 
 FROM products 
 ORDER BY price ASC;
@@ -62,7 +62,7 @@ ORDER BY price ASC;
 
 ### Q6. Show only the first 3 products from the table.
 
-```sql
+
 SELECT * 
 FROM products 
 LIMIT 3;
@@ -72,7 +72,7 @@ LIMIT 3;
 
 ### Q7. Show product name as "Item_Name" and price as "Item_Price".
 
-```sql
+
 SELECT 
     name AS Item_Name, 
     price AS Item_Price 
@@ -83,10 +83,10 @@ FROM products;
 
 ### Q8. Show all the unique categories from the products table.
 
-```sql
 SELECT DISTINCT category 
 FROM products;
 ```
+
 
 
 
