@@ -1,21 +1,51 @@
 
-Given a table of purchases by date, calculate the month-over-month percentage change in revenue. The output should include the year-month date (YYYY-MM) and percentage change, rounded to the 2nd decimal point, and sorted from the beginning of the year to the end of the year.
-The percentage change column will be populated from the 2nd month forward and can be calculated as ((this month's revenue - last month's revenue) / last month's revenue)*100.
-Table
+## Monthly Percentage Difference in Revenue
 
-sf_transactions
-  
+### Problem
 
--------------------------------------------------------------------------------------------------------------------------
- 
+Given a table `sf_transactions` containing transaction data, calculate the **month-over-month percentage change in revenue**.
 
+The output should include:
 
-SELECT to_char(created_at::date, 'YYYY-MM') AS year_month,
-       round(((sum(value) - lag(sum(value), 1) OVER w) / (lag(sum(value), 1) OVER w)) * 100, 2) AS revenue_diff_pct
-FROM sf_transactions
-GROUP BY year_month 
-WINDOW w AS (
-                                 ORDER BY to_char(created_at::date, 'YYYY-MM'))
-ORDER BY year_month ASC
+* Year and month in format `YYYY-MM`
+* Percentage change in revenue compared to the previous month
 
+### Notes:
 
+* Percentage change = ((current_month - previous_month) / previous_month) * 100
+* Round the result to **2 decimal places**
+* The first month will have **NULL** as there is no previous month
+* Sort results in chronological order
+
+---
+
+### Table: sf_transactions
+
+| column_name | type     |
+| ----------- | -------- |
+| created_at  | datetime |
+| value       | float    |
+
+---
+
+### SQL Query
+
+```sql
+WITH monthly_revenue AS (
+    SELECT 
+        TO_CHAR(created_at::date, 'YYYY-MM') AS year_month,
+        SUM(value) AS revenue
+    FROM sf_transactions
+    GROUP BY year_month
+)
+
+SELECT 
+    year_month,
+    ROUND(
+        ((revenue - LAG(revenue) OVER (ORDER BY year_month)) 
+        / LAG(revenue) OVER (ORDER BY year_month)) * 100,
+        2
+    ) AS revenue_diff_pct
+FROM monthly_revenue
+ORDER BY year_month;
+```
