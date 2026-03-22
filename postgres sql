@@ -9,6 +9,6 @@ CREATE TABLE products(
   adden_on DATE DEFAULT CURRENT_DATE,
   last_update TIMESTAMP DEFAULT NOW()
 );
-,,
+
 
 
