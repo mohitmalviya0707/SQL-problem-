@@ -1,1 +1,35 @@
 
+WITH loads AS (
+  SELECT
+    user_id,
+    DATE(timestamp) AS day,
+    MAX(timestamp) AS load_time
+  FROM facebook_web_log
+  WHERE action = 'page_load'
+  GROUP BY user_id, DATE(timestamp)
+),
+exits AS (
+  SELECT
+    user_id,
+    DATE(timestamp) AS day,
+    MIN(timestamp) AS exit_time
+  FROM facebook_web_log
+  WHERE action = 'page_exit'
+  GROUP BY user_id, DATE(timestamp)
+),
+sessions AS (
+  SELECT
+    l.user_id,
+    l.load_time,
+    e.exit_time,
+    EXTRACT(EPOCH FROM (e.exit_time - l.load_time)) AS session_duration
+  FROM loads l
+  JOIN exits e
+    ON l.user_id = e.user_id AND l.day = e.day
+  WHERE l.load_time < e.exit_time
+)
+SELECT
+  user_id,
+  AVG(session_duration) AS avg_session_duration
+FROM sessions
+GROUP BY user_id;
