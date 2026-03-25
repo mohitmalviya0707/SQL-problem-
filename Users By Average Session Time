@@ -6,7 +6,7 @@ Output the user_id and their average session time.
 solution
 
  -------------------------------------------------------------------------------------------
-WITH loads AS (     ............
+WITH loads AS (     ...........
   SELECT
     user_id,
     DATE(timestamp) AS day,
