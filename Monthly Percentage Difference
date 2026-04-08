@@ -8,7 +8,7 @@ Given a table `sf_transactions` containing transaction data, calculate the **mon
 The output should include:
 
 * Year and month in format `YYYY-MM`
-* Percentage change in revenue compared to the previous month    ,,,,,,,,,,
+* Percentage change in revenue compared to the previous month    ,,,,,,,,
 
 ### Notes:
 
