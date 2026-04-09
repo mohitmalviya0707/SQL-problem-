@@ -8,7 +8,7 @@ Count the number of **unique movies** for which **Abigail Breslin** was nominate
 
 ### Table: oscar_nominees            
 
-| column_name | type |
+| column_name | type |  
 | ----------- | ---- |
 | nominee     | text |
 | movie       | text |
