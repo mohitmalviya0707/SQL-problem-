@@ -2,7 +2,7 @@
 
 ### Table: products           
 
-| column_name | type  |
+| column_name | type  |   
 | ----------- | ----- |
 | name        | text  |
 | price       | float |
