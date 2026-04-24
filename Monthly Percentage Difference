@@ -1,6 +1,5 @@
 
-## Monthly Percentage Difference in Revenue    123456789
-
+## Monthly Percentage Difference in Revenue    
 ### Problem
 
 Given a table `sf_transactions` containing transaction data, calculate the **month-over-month percentage change in revenue**.
