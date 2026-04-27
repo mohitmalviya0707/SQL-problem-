@@ -1,7 +1,6 @@
 ## Basic SQL Queries on Products Table  
 
-### Table: products               1234567
-
+### Table: products               
 | column_name | type  |   
 | ----------- | ----- |
 | name        | text  |
